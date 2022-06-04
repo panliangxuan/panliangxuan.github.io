@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>图片名字</title>
+      <link href="/archives/123.html"/>
+      <url>/archives/123.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><img src="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg" alt="图片名称描述文字"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>代码演示</title>
+      <link href="/archives/0.html"/>
+      <url>/archives/0.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line"><span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36&quot;</span>,</span><br><span class="line"><span class="string">&quot;referer&quot;</span>: <span class="string">&quot;https://www.mzitu.com/tag/ugirls/&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 请求妹子图拿到网站数据</span></span><br><span class="line">response = requests.get(<span class="string">&quot;https://www.mzitu.com/tag/ugirls/&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 抽取想要的数据 图片标题 图片链接</span></span><br><span class="line">xml = etree.HTML(response.text)      <span class="comment">#整理成xml文档对象</span></span><br><span class="line">tit_list = xml.xpath(<span class="string">&#x27;//img[@class=&quot;lazy&quot;]/@alt&#x27;</span>)</span><br><span class="line">src_list = xml.xpath(<span class="string">&#x27;//img[@class=&quot;lazy&quot;]/@data-original&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> tit,src <span class="keyword">in</span> <span class="built_in">zip</span>(tit_list,src_list):</span><br><span class="line"><span class="comment"># 3. 下载图片</span></span><br><span class="line">response = requests.get(src,headers=headers)</span><br><span class="line">fileName = <span class="string">&quot;E:/DATA/girl/&quot;</span>+tit+<span class="string">&quot;.jpg&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;正在保存图片文件:&quot;</span>+fileName)</span><br><span class="line"><span class="comment"># 4. 保存图片</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(fileName,<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">f.write(response.content)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第一个博客文章</title>
+      <link href="/archives/343230a4.html"/>
+      <url>/archives/343230a4.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>1826年9月17日，黎曼生于德国北部汉诺威的布雷塞伦茨村，父亲是一个乡村的穷苦牧师。他6岁开始上学，14岁进入大学预科学习，19岁按其父亲的意愿进入哥廷根大学攻读哲学和神学，以便将来继承父志也当一名牧师。由于从小酷爱数学，黎曼在学习哲学和神学的同时也听些数学课。当时的哥廷根大学是世界数学的中心之一，—些著名的数学家如高斯、韦伯、斯特尔都在校执教。黎曼被这里的数学教学和数学研究的气氛所感染，决定放弃神学，专攻数学。</p><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>1847年，黎曼转到柏林大学学习，成为雅可比、狄利克雷、施泰纳、艾森斯坦的学生。1849年重回哥廷根大学攻读博士学位，成为高斯晚年的学生。</p><h3 id="三级标题-1"><a href="#三级标题-1" class="headerlink" title="三级标题"></a>三级标题</h3><p>1851年，黎曼获得数学博士学位；1854年被聘为哥廷根大学的编外讲师；1857年晋升为副教授；1859年接替去世的狄利克雷被聘为教授。</p><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><p>19世纪数学最独特的创造是复变函数理论的创立，它是18世纪人们对复数及复函数理论研究的延续。1850年以前，柯西、雅可比、高斯、阿贝尔、维尔斯特拉斯已对单值解析函数的理论进行了系统的研究，而对于多值函数仅有柯西和皮瑟有些孤立的结论。</p><h3 id="三级标题-2"><a href="#三级标题-2" class="headerlink" title="三级标题"></a>三级标题</h3><p>1851年，黎曼在高斯的指导下完成题为《单复变函数的一般理论的基础》的博士论文，后来又在《数学杂志》上发表了四篇重要文章，对其博士论文中思想的做了进一步的阐述，一方面总结前人关于单值解析函数的成果，并用新的工具予以处理，同时创立多值解析函数的理论基础，并由此为几个不同方向的进展铺平了道路。</p><h3 id="三级标题-3"><a href="#三级标题-3" class="headerlink" title="三级标题"></a>三级标题</h3><p>柯西、黎曼和维尔斯特拉斯是公认的复变函数论的主要奠基人，而且后来证明在处理复函数理论的方法上黎曼的方法是本质的，柯西和黎曼的思想被融合起来，维尔斯特拉斯的思想可以从柯西—黎曼的观点推导出来。<br>在黎曼对多值函数的处理中，最关键的是他引入了被后人称“黎曼面”的概念。通过黎曼面给多值函数以几何直观，且在黎曼面上表示的多值函数是单值的。他在黎曼面上引入支点、横剖线、定义连通性，开展对函数性质的研究获得一系列成果。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/archives/4a17b156.html"/>
+      <url>/archives/4a17b156.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
