@@ -1,0 +1,531 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>代谢组学 | Pan's Blog</title><meta name="keywords" content="生物信息分析,代谢组学"><meta name="author" content="PanLiangxuan"><meta name="copyright" content="PanLiangxuan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【代谢组学】  数据分析基本概念代谢物所有分子量小于1500Da的小分子物质，包括糖类、核苷、有机酸、酮类化合物、多肽、氨基酸、有机胺类、醛类化合物、脂质、萜类、类固醇、生物碱、小分子药物等等。 代谢组一个细胞、组织、器官中所有代谢物的集合。 代谢组学利用高通量的技术来鉴定和定量一个细胞、组织或器官中所有小分子或代谢物的生命科学研究。 代谢组学分类与应用    非靶向代谢组学 靶向代谢组学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代谢组学">
+<meta property="og:url" content="https://panliangxuan.xyz/posts/1315.html">
+<meta property="og:site_name" content="Pan&#39;s Blog">
+<meta property="og:description" content="【代谢组学】  数据分析基本概念代谢物所有分子量小于1500Da的小分子物质，包括糖类、核苷、有机酸、酮类化合物、多肽、氨基酸、有机胺类、醛类化合物、脂质、萜类、类固醇、生物碱、小分子药物等等。 代谢组一个细胞、组织、器官中所有代谢物的集合。 代谢组学利用高通量的技术来鉴定和定量一个细胞、组织或器官中所有小分子或代谢物的生命科学研究。 代谢组学分类与应用    非靶向代谢组学 靶向代谢组学">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg">
+<meta property="article:published_time" content="2022-06-29T07:29:04.000Z">
+<meta property="article:modified_time" content="2022-06-29T07:44:14.950Z">
+<meta property="article:author" content="PanLiangxuan">
+<meta property="article:tag" content="生物信息分析">
+<meta property="article:tag" content="代谢组学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://panliangxuan.xyz/posts/1315"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-JYQ8GXTHcf"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查詢的內容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，文章内容可能已经过时，请优先查看最新文章！"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: PanLiangxuan","link":"連結: ","source":"來源: Pan's Blog","info":"著作權歸作者所有。商業轉載請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切換為繁體","cht_to_chs":"你已切換為簡體","day_to_night":"你已切換為深色模式","night_to_day":"你已切換為淺色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '代谢组学',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-29 15:44:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/css/function.min.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://w.wallhaven.cc/full/4g/wallhaven-4gj39d.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fa fa-list"></i><span> 清單</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 書單</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Pan's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fa fa-list"></i><span> 清單</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 書單</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">代谢组学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2022-06-29T07:29:04.000Z" title="發表於 2022-06-29 15:29:04">2022-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2022-06-29T07:44:14.950Z" title="更新於 2022-06-29 15:44:14">2022-06-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/">生物信息分析</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6/">代谢组学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀時長:</span><span>6分鐘</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="代谢组学"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【代谢组学】-数据分析"><a href="#【代谢组学】-数据分析" class="headerlink" title="【代谢组学】  数据分析"></a>【代谢组学】  数据分析</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h4 id="代谢物"><a href="#代谢物" class="headerlink" title="代谢物"></a>代谢物</h4><p>所有分子量小于1500Da的小分子物质，包括糖类、核苷、有机酸、酮类化合物、多肽、氨基酸、有机胺类、醛类化合物、脂质、萜类、类固醇、生物碱、小分子药物等等。</p>
+<h4 id="代谢组"><a href="#代谢组" class="headerlink" title="代谢组"></a>代谢组</h4><p>一个细胞、组织、器官中所有代谢物的集合。</p>
+<h4 id="代谢组学"><a href="#代谢组学" class="headerlink" title="代谢组学"></a>代谢组学</h4><p>利用高通量的技术来鉴定和定量一个细胞、组织或器官中所有小分子或代谢物的生命科学研究。</p>
+<h2 id="代谢组学分类与应用"><a href="#代谢组学分类与应用" class="headerlink" title="代谢组学分类与应用"></a>代谢组学分类与应用</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">非靶向代谢组学</th>
+<th align="center">靶向代谢组学</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">研究目的</td>
+<td align="center">无偏向性的对所有小分子代谢物同时进行检测分析</td>
+<td align="center">对指定列表的代谢产物的分子，特别针对一种或几种途径的代谢产物</td>
+</tr>
+<tr>
+<td align="center">优点</td>
+<td align="center">无偏向性，高通量，样本无序特出处理且一次进样分析</td>
+<td align="center">灵敏度高，完全定量，可得到样本中代谢物的浓度</td>
+</tr>
+<tr>
+<td align="center">缺点</td>
+<td align="center">需要进行复杂的生物信息学分析；只能获得半定量的结果</td>
+<td align="center">需要购买标准品，进行分析方法的开发、验证，研究成本高</td>
+</tr>
+<tr>
+<td align="center">分析平台</td>
+<td align="center">NMR、LC-MS、GC-MS等</td>
+<td align="center">HPLC、GC、LC-MS、GC-MS等</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">分析技术</th>
+<th>灵敏度mol</th>
+<th align="center">优势</th>
+<th align="center">缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">核磁共振NMR</td>
+<td>10-6</td>
+<td align="center">无创检测，样品需求量大；特异性高、分辨率高，能够对代谢物同时完成定性和定量分析</td>
+<td align="center">动态范围有限，灵敏度较低，硬件投资较大</td>
+</tr>
+<tr>
+<td align="center">液质联用LC-MS</td>
+<td>10-15</td>
+<td align="center">灵敏度、分辨率高，可以分析不稳定、不易衍生化、难挥发和分子量较大的代谢物</td>
+<td align="center">数据库不健全，可鉴定的化合物有限</td>
+</tr>
+<tr>
+<td align="center">气质联用GC-MS</td>
+<td>10-12</td>
+<td align="center">分辨率、选择性好，数据库较多</td>
+<td align="center">样品处理过程较为繁琐，难挥发性物种或半挥发性物种需要衍生化后才能进行分析</td>
+</tr>
+</tbody></table>
+<p>代谢组学应用：</p>
+<ul>
+<li>遗传疾病分析</li>
+<li>营养成分分析</li>
+<li>临床样品分析</li>
+<li>耐药性分析</li>
+<li>移植监测</li>
+<li>毒理学测试</li>
+<li>发酵过程检测</li>
+<li>药物分型</li>
+<li>水质分析</li>
+<li>石油化学品分析</li>
+</ul>
+<h2 id="代谢组学研究意义与优势"><a href="#代谢组学研究意义与优势" class="headerlink" title="代谢组学研究意义与优势"></a>代谢组学研究意义与优势</h2><ul>
+<li>代谢组的时间响应在所有组学中最快。</li>
+<li>代谢组的结果易于理解，容易与表型和功能结合。</li>
+</ul>
+<h2 id="代谢组学分析流程"><a href="#代谢组学分析流程" class="headerlink" title="代谢组学分析流程"></a>代谢组学分析流程</h2><ol>
+<li>样本收集</li>
+<li>数据采集（NMR&#x2F;LC-MS&#x2F;GC-MS获取谱图数据）</li>
+<li>谱图——峰表（谱图处理得到特征矩阵）</li>
+<li>代谢物定性（谱图数据库与数据集峰位置、相关模式、相对强度等特征相匹配）</li>
+<li>差异离子筛选（单变量分析、非监督&#x2F;监督多变量分析、多元分析、分类模型、候选标志物）</li>
+<li>功能分析（Pathway分析、富集分析、相关性网络分析（高斯模型和拓扑结构））</li>
+</ol>
+<h2 id="非靶向代谢组实验设计"><a href="#非靶向代谢组实验设计" class="headerlink" title="非靶向代谢组实验设计"></a>非靶向代谢组实验设计</h2><ol>
+<li>代谢物提取，一般要求每组至少10个样；</li>
+<li>在所有提取好的样本中取等量混合作为QC；</li>
+<li>QC样本与实验样本穿插上机，开始十个QC，结尾三个QC，中间每十个样本穿插一个QC样本。</li>
+</ol>
+<h2 id="数据分析流程"><a href="#数据分析流程" class="headerlink" title="数据分析流程"></a>数据分析流程</h2><p>一般有如下几点：</p>
+<ol>
+<li>数据预处理。如缺失值过滤填充、数据归一化等。</li>
+<li>数据质控。包括CV分布、QC等。</li>
+<li>统计分析。包括单变量、多变量等。</li>
+<li>功能分析。包括Pathway、网络分析、Biomarker筛选等。</li>
+</ol>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><ol>
+<li><h5 id="缺失原因"><a href="#缺失原因" class="headerlink" title="缺失原因"></a>缺失原因</h5><ul>
+<li>信号很低检测不到；</li>
+<li>检测错误，如离子抑制或者仪器性能不稳定；</li>
+<li>提峰的算法限制，不能从背景中将低的信号提取出来；</li>
+<li>解卷积时不能将重叠的峰全部解析出来。</li>
+</ul>
+</li>
+<li><h5 id="缺失值过滤"><a href="#缺失值过滤" class="headerlink" title="缺失值过滤"></a>缺失值过滤</h5><ul>
+<li><p>QC样本中缺失超过50%的去除；</p>
+</li>
+<li><p>样本中缺失值超过80%的去除。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7698829-c2b7e0ea378e2172.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="img"></p>
+</li>
+</ul>
+</li>
+<li><h5 id="缺失值填充"><a href="#缺失值填充" class="headerlink" title="缺失值填充"></a>缺失值填充</h5><ul>
+<li><p>最小值填充</p>
+</li>
+<li><p>平均值&#x2F;中值填充</p>
+</li>
+<li><p>KNN（ K-Neares Neighbor）填充</p>
+</li>
+<li><p>BPCA（Bayesian PCA）填充</p>
+</li>
+<li><p>PPCA（Probabilistic PCA）填充</p>
+</li>
+<li><p>Singular Value Decomposition (SVD) 填充</p>
+</li>
+<li><p>RF（RandomForest）填充</p>
+<p><strong>一般推荐KNN，RF填充</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="噪音信号处理"><a href="#噪音信号处理" class="headerlink" title="噪音信号处理"></a>噪音信号处理</h4><p>一般是低质量的离子。</p>
+<h5 id="低质量离子的确定："><a href="#低质量离子的确定：" class="headerlink" title="低质量离子的确定："></a>低质量离子的确定：</h5><ul>
+<li>计算某个离子在QC样本中的CV（标准差&#x2F;均值， 也称变异系数）；其值越小，说明偏差越小；</li>
+</ul>
+<h5 id="判断标准："><a href="#判断标准：" class="headerlink" title="判断标准："></a>判断标准：</h5><ul>
+<li>对单个离子峰而言，CV&lt;0.3，则该离子峰合格，否则去除；</li>
+<li>对于整体数据而言，CV&lt;0.3，峰所占比例&gt;60%，则整体数据合格；</li>
+</ul>
+<h4 id="样本归一化"><a href="#样本归一化" class="headerlink" title="样本归一化"></a>样本归一化</h4><p>目的是为了提高样本间的可比性。</p>
+<p>样本间有差异性，如不同人的尿液浓度不同，不能直接拿来比较。</p>
+<p>可在采集前归一化，如肌酸酐归一化；也可在采集后归一化，如sum，pqn，quantile等。</p>
+<p>对于数据分析而言，通常是后者，如总和归一化（sum）。</p>
+<h4 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h4><p>下游的分析一般要求数据为正态分布或者高斯分布；</p>
+<p>所以数据通常要进行Log转化或power转化，这两者都能够将极大值的抑制效应消除，</p>
+<p>并且能够调整数据的分布，如下图；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7698829-8a0957287ed6136c.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="img"></p>
+<h3 id="数据质控"><a href="#数据质控" class="headerlink" title="数据质控"></a>数据质控</h3><h4 id="QC样本的TIC重叠情况"><a href="#QC样本的TIC重叠情况" class="headerlink" title="QC样本的TIC重叠情况"></a>QC样本的TIC重叠情况</h4><p><img src="https://upload-images.jianshu.io/upload_images/7698829-e1e55a56e5e7bcfb.png" alt="img"></p>
+<p>上图分别是阴离子和阳离子模式下QC样本的TIC重叠情况。</p>
+<p>一般认为：</p>
+<p>所有的QC样本峰重叠良好；</p>
+<p>峰强度波动差别不大；</p>
+<h4 id="QC样本中CV-lt-30-的峰所占比例"><a href="#QC样本中CV-lt-30-的峰所占比例" class="headerlink" title="QC样本中CV&lt;30%的峰所占比例"></a>QC样本中CV&lt;30%的峰所占比例</h4><p><img src="https://upload-images.jianshu.io/upload_images/7698829-32583752da4b2230.png" alt="img"></p>
+<h4 id="PCA中QC样本的聚集程度"><a href="#PCA中QC样本的聚集程度" class="headerlink" title="PCA中QC样本的聚集程度"></a>PCA中QC样本的聚集程度</h4><p><img src="https://upload-images.jianshu.io/upload_images/7698829-4edd875c2206cacf.png" alt="img"></p>
+<h4 id="QC样本的相关性"><a href="#QC样本的相关性" class="headerlink" title="QC样本的相关性"></a>QC样本的相关性</h4><p><img src="https://upload-images.jianshu.io/upload_images/7698829-25ec14d80eff83b5.png" alt="img"></p>
+<p>上图分别为归一化前和归一化后的数据。</p>
+<h3 id="统计分析"><a href="#统计分析" class="headerlink" title="统计分析"></a>统计分析</h3><h4 id="单变量分析"><a href="#单变量分析" class="headerlink" title="单变量分析"></a>单变量分析</h4><p>一次只分析一个变量，即一个m&#x2F;z，</p>
+<p>考察不同组别不同样本的这个m&#x2F;z表达有无差异？</p>
+<p>常见的方法有倍数分析，t检验，秩和检验，方差分析等。</p>
+<h4 id="聚类分析"><a href="#聚类分析" class="headerlink" title="聚类分析"></a>聚类分析</h4><p>核心思想就是根据具体的指标(变量)对所研究的样品进行分类；</p>
+<p>聚类分析需要设定一个方法来衡量样本间的相似性或者不相似性（常用欧式距离，相关性系数等）；</p>
+<p>常见聚类的方法：系统聚类（层次聚类）、K-均值聚类等。</p>
+<p>K-均值首先要估计出将要分出几个类，然后将全部的基因按照相似性的距离，归入这几类中。</p>
+<p>K– means计算量要小得多，效率比层次聚类要高。</p>
+<p>无论哪种分类方法，最终要分成多少类，并不是完全由方法本身来决定，研究者应结合具体问题而定。</p>
+<p>聚类分析是一种探索性的数据分析方法。相同的数据采用不同的分类方法，也会的得到不同的分类结果。</p>
+<p>分类的结果没有对错之分，只是分类标准不同。</p>
+<p>使用聚类方法时，首先要明确分类的目的，再考虑选择哪些变量(或数据)参与分类，最后才需要考虑方法的选择。</p>
+<h4 id="多变量分析"><a href="#多变量分析" class="headerlink" title="多变量分析"></a>多变量分析</h4><ol>
+<li><h5 id="PCA分析"><a href="#PCA分析" class="headerlink" title="PCA分析"></a>PCA分析</h5><p>以下分别是得分图（样本在新的坐标系中的位置）和载荷图(loading图，原变量与主成分间的夹角)</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7698829-7d007680c4f8486a.png" alt="img"></p>
+<p>PCA结果如何分析？</p>
+<ul>
+<li>组内差异</li>
+<li>组间差异</li>
+<li>异常样本</li>
+<li>PC1与PC2得分</li>
+</ul>
+</li>
+<li><h5 id="偏最小二乘法"><a href="#偏最小二乘法" class="headerlink" title="偏最小二乘法"></a>偏最小二乘法</h5><p>PLSDA的图和PCA类似。只是一种监督学习的方法，事先给样本分类，最后看能否将不同组分开。</p>
+<p>用R2和Q2进行模型评价。</p>
+<p>R2是相关性系数，表示这个模型的拟合效果，是一个定量的测量（范围0-1），意味着所建立的模型能在多大程度上代表真实的数据；</p>
+<p>一般当R2在0.7-0.8表示模型解释能力较好，较差的模型的R2往往为0.2-0.3</p>
+<p>Q2表示PLS-DA模型的预测能力；</p>
+<p>一般Q2大于0.5表示预测能力较好，并且R2与Q2的值应该比较接近。</p>
+<p>使用permutation test模型进行过拟合检验。</p>
+<p>VIP ( Variable Importance in Projection)变量重要性投影</p>
+<p>每一个m&#x2F;z都有VIP值，表示这个m&#x2F;z在某一个主成分上的投影，即重要程度；</p>
+<p>一般我们使用第一、第二主成分的VIP来表示这个m&#x2F;z对模型分型的贡献程度，VIP&gt;&#x3D;1被认为是具有显著贡献的。</p>
+</li>
+</ol>
+<h3 id="功能分析"><a href="#功能分析" class="headerlink" title="功能分析"></a>功能分析</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.baidu.com">潘良选</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://panliangxuan.xyz">https://panliangxuan.xyz</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">此文章版權歸潘良选所有，如有轉載，請註明來自原作者</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90/">生物信息分析</a><a class="post-meta__tags" href="/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6/">代谢组学</a></div><div class="post_share"><div class="social-share" data-image="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打賞</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/1314.html"><img class="next-cover" src="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">测试</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/posts/1314.html" title="测试"><img class="cover" src="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-12</div><div class="title">测试</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div><div id="comment-switch"><span class="first-comment">Waline</span><span class="switch-btn"></span><span class="second-comment">Livere</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjUzOS8zMzAwMg=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://w.wallhaven.cc/full/4g/wallhaven-4gj39d.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">PanLiangxuan</div><div class="author-info__description">环的一个非空子集</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/panliangxuan"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/panliangxuan" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:panliangxuan367@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Gmail"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_43769834" rel="external nofollow noreferrer" target="_blank" title="CSDN"><i class="fab fa-mailchimp"></i></a><a class="social-icon" href="https://weibo.com/u/5552159424" rel="external nofollow noreferrer" target="_blank" title="Weibo"><i class="fab fa-weibo"></i></a><a class="social-icon" href="https://space.bilibili.com/233239660" rel="external nofollow noreferrer" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to Pan'Blog ( •̀ ω •́ )✧</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E3%80%91-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-text">【代谢组学】  数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E8%B0%A2%E7%89%A9"><span class="toc-text">代谢物</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E8%B0%A2%E7%BB%84"><span class="toc-text">代谢组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6"><span class="toc-text">代谢组学</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E5%88%86%E7%B1%BB%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="toc-text">代谢组学分类与应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%84%8F%E4%B9%89%E4%B8%8E%E4%BC%98%E5%8A%BF"><span class="toc-text">代谢组学研究意义与优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-text">代谢组学分析流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E9%9D%B6%E5%90%91%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AE%9E%E9%AA%8C%E8%AE%BE%E8%AE%A1"><span class="toc-text">非靶向代谢组实验设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B"><span class="toc-text">数据分析流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">数据预处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86"><span class="toc-text">缺失值处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E5%A4%B1%E5%8E%9F%E5%9B%A0"><span class="toc-text">缺失原因</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E8%BF%87%E6%BB%A4"><span class="toc-text">缺失值过滤</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85"><span class="toc-text">缺失值填充</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%99%AA%E9%9F%B3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86"><span class="toc-text">噪音信号处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%8E%E8%B4%A8%E9%87%8F%E7%A6%BB%E5%AD%90%E7%9A%84%E7%A1%AE%E5%AE%9A%EF%BC%9A"><span class="toc-text">低质量离子的确定：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%87%E5%87%86%EF%BC%9A"><span class="toc-text">判断标准：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-text">样本归一化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2"><span class="toc-text">数据转换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%B4%A8%E6%8E%A7"><span class="toc-text">数据质控</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#QC%E6%A0%B7%E6%9C%AC%E7%9A%84TIC%E9%87%8D%E5%8F%A0%E6%83%85%E5%86%B5"><span class="toc-text">QC样本的TIC重叠情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#QC%E6%A0%B7%E6%9C%AC%E4%B8%ADCV-lt-30-%E7%9A%84%E5%B3%B0%E6%89%80%E5%8D%A0%E6%AF%94%E4%BE%8B"><span class="toc-text">QC样本中CV&lt;30%的峰所占比例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PCA%E4%B8%ADQC%E6%A0%B7%E6%9C%AC%E7%9A%84%E8%81%9A%E9%9B%86%E7%A8%8B%E5%BA%A6"><span class="toc-text">PCA中QC样本的聚集程度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#QC%E6%A0%B7%E6%9C%AC%E7%9A%84%E7%9B%B8%E5%85%B3%E6%80%A7"><span class="toc-text">QC样本的相关性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90"><span class="toc-text">统计分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-text">单变量分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90"><span class="toc-text">聚类分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-text">多变量分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PCA%E5%88%86%E6%9E%90"><span class="toc-text">PCA分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%8F%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95"><span class="toc-text">偏最小二乘法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-text">功能分析</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1315.html" title="代谢组学"><img src="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="代谢组学"/></a><div class="content"><a class="title" href="/posts/1315.html" title="代谢组学">代谢组学</a><time datetime="2022-06-29T07:29:04.000Z" title="發表於 2022-06-29 15:29:04">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1314.html" title="测试"><img src="https://w.wallhaven.cc/full/ln/wallhaven-lnzlo0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="测试"/></a><div class="content"><a class="title" href="/posts/1314.html" title="测试">测试</a><time datetime="2022-06-12T13:20:04.000Z" title="發表於 2022-06-12 21:20:04">2022-06-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/123.html" title="图片名字"><img src="https://w.wallhaven.cc/full/01/wallhaven-01grqv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图片名字"/></a><div class="content"><a class="title" href="/posts/123.html" title="图片名字">图片名字</a><time datetime="2022-06-02T16:38:00.000Z" title="發表於 2022-06-03 00:38:00">2022-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/0.html" title="代码演示"><img src="https://w.wallhaven.cc/full/d5/wallhaven-d5zygj.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="代码演示"/></a><div class="content"><a class="title" href="/posts/0.html" title="代码演示">代码演示</a><time datetime="2022-06-02T14:08:00.000Z" title="發表於 2022-06-02 22:08:00">2022-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/343230a4.html" title="第一个博客文章"><img src="https://w.wallhaven.cc/full/4d/wallhaven-4dpol4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第一个博客文章"/></a><div class="content"><a class="title" href="/posts/343230a4.html" title="第一个博客文章">第一个博客文章</a><time datetime="2022-05-31T15:42:04.000Z" title="發表於 2022-05-31 23:42:04">2022-05-31</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> PanLiangxuan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome to Pan'Blog ( •̀ ω •́ )✧</div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="簡繁轉換">繁</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料庫載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline-test-mnqz0kbpn-panliangxuan.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !false) {
+  if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Waline' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="/js/cursor.js"></script>null<script src="../js/Valine.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
